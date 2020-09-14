@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Include first necessary mocks
+#include <security/OpenSSLInit.hpp>
+
 #include <fastrtps/rtps/builtin/data/ParticipantProxyData.h>
 #include <fastrtps/rtps/builtin/data/WriterProxyData.h>
 #include <fastrtps/rtps/builtin/data/ReaderProxyData.h>
@@ -45,6 +46,11 @@ protected:
 
     virtual void TearDown()
     {
+    }
+
+    AccessControlTest()
+    {
+        static eprosima::fastrtps::rtps::security::OpenSSLInit openssl_init;
     }
 
     void fill_common_participant_security_attributes(
